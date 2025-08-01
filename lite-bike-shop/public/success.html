@@ -27,32 +27,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 
-    <script>
-  window.dataLayer = window.dataLayer || [];
-   window.dataLayer.push({
-    event: 'purchase',
-    ecommerce: {
-      transaction_id: 'ORDER123', //  actual order ID
-      value: 2000.98,
-      currency: 'USD',
-      items: [
-        {
-          //item_id: 'SKU_12345',
-          //item_name: 'Sccc',
-         // //price: 9999,
-          //quantity: 2
-        }
-      ]
-
-            value: orderTotal,
-      currency: 'USD'
-    },
-    customer_email: customerEmail
-  });
-
+<script>
+window.dataLayer = window.dataLayer || [];
+// You should dynamically populate these values with your transaction data.
+window.dataLayer.push({
+    'event': 'purchase',
+    'ecommerce': {
+        // Required top-level purchase parameters
+        'transaction_id': 'T_12345',
+        'value': 2000.98,
+        'currency': 'USD',
+        'shipping': 30.00,
+        'tax': 15.00,
+        'items': [{
+            'item_id': 'SKU_100',
+            'item_name': 'Hybrid Bike',
+            'price': 600.00,
+            'quantity': 1,
+            'item_brand': 'BrandX',
+            'item_category': 'Bikes'
+        }, {
+            'item_id': 'SKU_200',
+            'item_name': 'Bike Helmet',
+            'price': 45.00,
+            'quantity': 1,
+            'item_brand': 'SafetyGear',
+            'item_category': 'Accessories'
+        }]
+    }
+});
 
 </script>
-
 
   <h1>Thank you for your order!</h1>
   <p>This was a dummy checkout for training purposes.</p>
