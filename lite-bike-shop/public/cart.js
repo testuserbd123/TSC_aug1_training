@@ -3,13 +3,29 @@ function updateCartCount() {
   var el = document.getElementById('cart-count');
   if (el) el.textContent = cart.length;
 }
-function addToCart(name, price) {
+
+function addToCart(item_id, name, price) {
   let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-  cart.push({name, price});
+  cart.push({item_id, name, price});
   localStorage.setItem('cart', JSON.stringify(cart));
   updateCartCount();
   alert('Added to cart!');
+
+  // Push add_to_cart event to dataLayer for GTM
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'add_to_cart',
+    ecommerce: {
+      items: [{
+        item_id: item_id,
+        item_name: name,
+        price: price,
+        quantity: 1
+      }]
+    }
+  });
 }
+
 function displayCart() {
   const cart = JSON.parse(localStorage.getItem('cart') || '[]');
   const list = document.getElementById('cart-list');
@@ -27,25 +43,5 @@ function displayCart() {
   }
   updateCartCount();
 }
-
-// ...existing code...
-function addToCart(productName, price) {
-  // ...existing add to cart logic...
-
-  // Push add_to_cart event to dataLayer
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: 'add_to_cart',
-    ecommerce: {
-      items: [{
-        item_id: 'hybrid-bike', // Use a unique product ID if available
-        item_name: productName,
-        price: price,
-        quantity: 1
-      }]
-    }
-  });
-}
-// ...existing code...
 
 document.addEventListener('DOMContentLoaded', updateCartCount);
