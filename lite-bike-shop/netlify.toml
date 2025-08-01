@@ -1,0 +1,14 @@
+[build]
+  publish = "public"
+  command = "npm run build"
+
+[dev]
+  command = "npm run start"
+  port = 3000
+
+ 
+  [[redirects]]
+from = "https://test23pixel.online/*"
+to = "https://alex.test23pixel.online/:splat"
+status = 200
+force = true
