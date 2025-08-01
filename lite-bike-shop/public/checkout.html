@@ -6,6 +6,33 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- ...existing code... -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  // Replace with dynamic values from your checkout form/system
+  var customerEmail = "customer@example.com";
+  var orderTotal = 2000.98;
+
+  window.dataLayer.push({
+    event: 'begin_checkout',
+    ecommerce: {
+      items: [
+        {
+          //    item_id: 'SKU_12345',
+          //     item_name: 'Sample Product',
+          // price: 29.99,
+          //quantity: 2
+        }
+      ],
+      value: orderTotal,
+      currency: 'USD'
+    },
+    customer_email: customerEmail
+  });
+</script>
+
+
   <a href="cart.html">Back to Cart</a>
   <h1>Checkout</h1>
   <form id="checkout-form">

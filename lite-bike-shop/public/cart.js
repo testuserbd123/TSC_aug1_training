@@ -27,4 +27,25 @@ function displayCart() {
   }
   updateCartCount();
 }
+
+// ...existing code...
+function addToCart(productName, price) {
+  // ...existing add to cart logic...
+
+  // Push add_to_cart event to dataLayer
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'add_to_cart',
+    ecommerce: {
+      items: [{
+        item_id: 'hybrid-bike', // Use a unique product ID if available
+        item_name: productName,
+        price: price,
+        quantity: 1
+      }]
+    }
+  });
+}
+// ...existing code...
+
 document.addEventListener('DOMContentLoaded', updateCartCount);

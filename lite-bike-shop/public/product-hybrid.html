@@ -6,6 +6,24 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'view_item',
+    ecommerce: {
+      items: [{
+        item_id: 'SKU_100',       
+        item_name: 'Hybrid Bike',  
+        price: 600.,                 
+        quantity: 1
+      }]
+    }
+  });
+</script>
+
+
   <a href="index.html">Back to Products</a> | <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
   <h1>Hybrid Bike</h1>
   <p>Price: $600</p>
